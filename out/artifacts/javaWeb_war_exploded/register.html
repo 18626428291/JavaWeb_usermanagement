@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            var img = document.getElementById("checkcode");
+            //时间戳
+            img.onclick = function () {
+                var date = new Date().getTime();
+                img.src = "/javaWeb/demo14?" + date;
+            }
+            var alink = document.getElementById("change");
+            alink.onclick = function () {
+                var date = new Date().getTime();
+                img.src = "/javaWeb/demo14?" + date;
+            }
+        }
+    </script>
+</head>
+<body>
+<img id="checkcode" src="/javaWeb/demo14" alt="">
+<a id="change" href="javascript:void(0);">看不清？换一张</a>
+</body>
+</html>

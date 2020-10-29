@@ -7,6 +7,7 @@ import anli4.domain.User;
 import anli4.service.UserService;
 
 import java.util.List;
+import java.util.Map;
 
 public class UserServiceImpl implements UserService {
     private UserDao dao = new UserDaoImpl();
@@ -52,7 +53,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public PageBean<User> findUserByPage(String _currentPage, String _rows) {
+    public PageBean<User> findUserByPage(String _currentPage, String _rows, Map<String, String[]> condition) {
         int currentPage = Integer.parseInt(_currentPage);
         int rows = Integer.parseInt(_rows);
 //        if (currentPage <= 0) {
@@ -66,12 +67,12 @@ public class UserServiceImpl implements UserService {
         pb.setCurrentPage(currentPage);
         pb.setRows(rows);
         //dao查询总记录数
-        int totalCount = dao.findTotalCount();
+        int totalCount = dao.findTotalCount(condition);
         pb.setTotalCount(totalCount);
         //dao查询list集合
         //需要传开始的记录索引
         int start = (currentPage - 1) * rows ;
-        List<User> list =dao.findByPage(start, rows);
+        List<User> list =dao.findByPage(start, rows,condition);
         pb.setList(list);
         //计算总页码
         int totalPage = totalCount % rows == 0 ? totalCount / rows : totalCount / rows + 1;

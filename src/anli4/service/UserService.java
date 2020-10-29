@@ -1,5 +1,6 @@
 package anli4.service;
 
+import anli4.domain.PageBean;
 import anli4.domain.User;
 
 import java.util.List;
@@ -27,4 +28,6 @@ public interface UserService {
     void update(User user);
 
     void deleteSelectUser(String[] values);
+
+    PageBean<User> findUserByPage(String currentPage, String rows);
 }

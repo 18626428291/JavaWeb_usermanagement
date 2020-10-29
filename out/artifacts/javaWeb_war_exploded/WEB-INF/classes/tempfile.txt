@@ -1,0 +1,5 @@
+Using CATALINA_BASE:   "C:\Users\xujiajun\.IntelliJIdea2019.3\system\tomcat\Tomcat_9_0_26_javaWeb"
+Using CATALINA_HOME:   "E:\apache-tomcat-9.0.26"
+Using CATALINA_TMPDIR: "E:\apache-tomcat-9.0.26\temp"
+Using JRE_HOME:        "C:\Program Files\Java\jdk-15"
+Using CLASSPATH:       "E:\apache-tomcat-9.0.26\bin\bootstrap.jar;E:\apache-tomcat-9.0.26\bin\tomcat-juli.jar"

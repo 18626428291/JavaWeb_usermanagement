@@ -2,6 +2,7 @@ package anli4.service.impl;
 
 import anli4.dao.UserDao;
 import anli4.dao.impl.UserDaoImpl;
+import anli4.domain.PageBean;
 import anli4.domain.User;
 import anli4.service.UserService;
 
@@ -48,5 +49,35 @@ public class UserServiceImpl implements UserService {
                 dao.delete(Integer.parseInt(id));
             }
         }
+    }
+
+    @Override
+    public PageBean<User> findUserByPage(String _currentPage, String _rows) {
+        int currentPage = Integer.parseInt(_currentPage);
+        int rows = Integer.parseInt(_rows);
+//        if (currentPage <= 0) {
+//            currentPage = 1;
+//        }
+
+
+        //创建一个空的pagebean
+        PageBean<User> pb = new PageBean<>();
+        //设置参数
+        pb.setCurrentPage(currentPage);
+        pb.setRows(rows);
+        //dao查询总记录数
+        int totalCount = dao.findTotalCount();
+        pb.setTotalCount(totalCount);
+        //dao查询list集合
+        //需要传开始的记录索引
+        int start = (currentPage - 1) * rows ;
+        List<User> list =dao.findByPage(start, rows);
+        pb.setList(list);
+        //计算总页码
+        int totalPage = totalCount % rows == 0 ? totalCount / rows : totalCount / rows + 1;
+        pb.setTotalPage(totalPage);
+
+
+        return pb;
     }
 }

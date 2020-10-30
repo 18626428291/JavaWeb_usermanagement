@@ -26,6 +26,11 @@ public class FindUserByPageServlet extends HttpServlet {
         if (rows == null || "".equals(rows)) {
             rows = "5";
         }
+<<<<<<< HEAD
+        //获取条件查询的参数
+        Map<String, String[]> condition = request.getParameterMap();
+=======
+>>>>>>> 7b4d72ead3f12e7392a6626953c3ba46a4769f4b
         //调用service
         UserService service = new UserServiceImpl();
         PageBean<User> pb = service.findUserByPage(currentPage, rows);

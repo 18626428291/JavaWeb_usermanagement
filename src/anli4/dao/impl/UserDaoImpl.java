@@ -117,6 +117,7 @@ public class UserDaoImpl implements UserDao {
                 //
                 sb.append(" and " + key + " like ? ");
                 params.add("%"+value+"%");//条件的值
+
             }
 
         }
@@ -129,9 +130,6 @@ public class UserDaoImpl implements UserDao {
         //
         System.out.println(sql);
         System.out.println(params);
-
-
-
         return template.query(sql, new BeanPropertyRowMapper<>(User.class), params.toArray());
     }
 

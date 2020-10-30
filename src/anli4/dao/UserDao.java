@@ -21,7 +21,7 @@ public interface UserDao {
 
     void update(User user);
 
-    int findTotalCount(Map<String, String[]> condition);
+    int findTotalCount(Map<String,String[]> map);
 
-    List<User> findByPage(int start, int rows, Map<String, String[]> condition);
+    List<User> findByPage(int start, int rows, Map<String,String[]> map);
 }

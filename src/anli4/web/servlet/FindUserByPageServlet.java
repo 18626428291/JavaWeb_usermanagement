@@ -31,12 +31,15 @@ public class FindUserByPageServlet extends HttpServlet {
         }
         //获取条件查询的参数
         Map<String, String[]> condition = request.getParameterMap();
+
+
+
         //调用service
         UserService service = new UserServiceImpl();
         PageBean<User> pb = service.findUserByPage(currentPage, rows, condition);
         //存入request
         request.setAttribute("pb", pb);
-        request.setAttribute("condition", condition);//将查询条件也存入request
+        request.setAttribute("condition", condition);//将查询条件
         //转发
         request.getRequestDispatcher("/anli4page/list.jsp").forward(request, response);
 
